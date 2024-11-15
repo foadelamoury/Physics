@@ -13,7 +13,7 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(main src/main.cpp)
+add_executable(main src/main.cpp "src/PhysicsWorld.cpp" "src/PhysicsWorld.h" "src/Vector2d.cpp" "src/Vector2d.h" "src/Renderer.h" "src/Renderer.cpp" "src/Particle.cpp" "src/Particle.h")
 target_link_libraries(main PRIVATE sfml-graphics)
 target_compile_features(main PRIVATE cxx_std_17)
 
