@@ -7,6 +7,27 @@ Particle::Particle(Vector2d position, float mass, float dragCoeffecient)
 	this->position = position;
 	this->mass = mass;
 	this->dragCoeffecient = dragCoeffecient;
+
+
+	collider.center = position;
+	collider.r = 100;
+
+	
+	
+	aabbCollider.ul = Vector2d(0, 0);
+	aabbCollider.lr = Vector2d(collider.r*2, collider.r*2);
+	aabbCollider.updatePosition(position);
+
+
+	vector<Vector2d> points;
+
+	points.push_back(Vector2d(0, 0));
+	points.push_back(Vector2d(0, collider.r * 2));
+	points.push_back(Vector2d(collider.r * 2, collider.r * 2));
+	points.push_back(Vector2d(collider.r * 2, 0));
+
+	satCollider.points = points;
+	satCollider.updatePosition(position);
 }
 
 void Particle::Update(float dt)
@@ -18,6 +39,8 @@ void Particle::Update(float dt)
 	this->position += velocity * dt;
 
 	this->forces = Vector2d(0, 0);
+	collider.center = position;
+
 	
 
 	if (velocity.getMagnitude() > 0) {
@@ -25,9 +48,11 @@ void Particle::Update(float dt)
 		this->addForce(dragF);
 
 	}
-	this->addForce(PhysicsWorld::gravity);
+	//this->addForce(PhysicsWorld::gravity);
 
-	
+	aabbCollider.updatePosition(position);
+
+	satCollider.updatePosition(position);
 		
 		
 }

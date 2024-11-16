@@ -24,6 +24,15 @@ public:
 
 	void Update(float deltaTime);
 
+	/// <summary>
+	/// checks collision between two circles
+	/// </summary>
+	void Check2CircleCol();
+	void CheckAABBCol();
+
+	void CheckSATCol(bool* collision);
+
+
 
 
 	static const Vector2d gravity ;

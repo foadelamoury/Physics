@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Vector2d.h"
+#include "Collider.h"
+#include "AABBCollider.h"
+#include "SATCollider.h"
 
 
 
@@ -19,6 +22,12 @@ public:
 	Vector2d acceleration;
 
 	Vector2d forces;
+
+	Collider collider;
+
+	AABBCollider aabbCollider;
+
+	SATCollider satCollider;
 
 
 
