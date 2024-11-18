@@ -21,7 +21,7 @@ int main()
     CircleShape circle2;
 
     DrawCircle(circle1, window, 4.f,400.f,sf::Color::Red);
-    DrawCircle(circle2, window, 2.f, 400.f, sf::Color::Yellow);
+    DrawCircle(circle2, window, 2.f, 290.f, sf::Color::Yellow);
 
     PhysicsWorld world;
     
@@ -61,21 +61,20 @@ int main()
         }
         dt= clock.getElapsedTime().asSeconds()-time;
 		time += dt;
-        particle1.addForce(Vector2d({ 1000,0 }));
-        particle2.addForce(Vector2d({ -1000,0 }));
-
+        if (!collision)
+        {
+            particle1.addForce(Vector2d({ 1000,0 }));
+            particle2.addForce(Vector2d({ -1000,0 }));
+        }
         world.Update(dt);
   
-        //world.Check2CircleCol();
+        //world.Check2CircleCol(&collision);
 
-        //world.CheckAABBCol();
+        //world.CheckAABBCol(&collision);
 
         world.CheckSATCol(&collision);
-        if (collision) 
-        {
-            particle1.addForce(Vector2d({ -2000,0 }));
-            particle2.addForce(Vector2d({ 2000,0 }));
-        }
+
+   
         circle1.setPosition(particle1.position.x, particle1.position.y);
         circle2.setPosition(particle2.position.x, particle2.position.y);
 

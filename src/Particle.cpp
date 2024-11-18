@@ -8,7 +8,7 @@ Particle::Particle(Vector2d position, float mass, float dragCoeffecient)
 	this->mass = mass;
 	this->dragCoeffecient = dragCoeffecient;
 
-
+	
 	collider.center = position;
 	collider.r = 100;
 
@@ -44,8 +44,8 @@ void Particle::Update(float dt)
 	
 
 	if (velocity.getMagnitude() > 0) {
-		Vector2d dragF = -0.5 * velocity * velocity.getMagnitude() * dragCoeffecient;
-		this->addForce(dragF);
+		/*Vector2d dragF = -0.5 * velocity * velocity.getMagnitude() * dragCoeffecient;
+		this->addForce(dragF);*/
 
 	}
 	//this->addForce(PhysicsWorld::gravity);

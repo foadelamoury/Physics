@@ -27,8 +27,8 @@ public:
 	/// <summary>
 	/// checks collision between two circles
 	/// </summary>
-	void Check2CircleCol();
-	void CheckAABBCol();
+	void Check2CircleCol(bool* collision);
+	void CheckAABBCol(bool* collision);
 
 	void CheckSATCol(bool* collision);
 
